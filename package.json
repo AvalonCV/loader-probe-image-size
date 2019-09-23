@@ -2,7 +2,7 @@
 	"name": "loader-probe-image-size",
 	"repository": "https://github.com/AvalonCV/loader-probe-image-size.git",
 	"files": ["/dist/index.js"],
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Image size loader for webpack - using probe-image-size",
 	"main": "dist/index.js",
 	"scripts": {
