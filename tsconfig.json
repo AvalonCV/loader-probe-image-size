@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"target": "es6",
+		"module": "commonjs",
+		"lib": ["es2015"],
+		"strict": true,
+		"outDir": "dist",
+		"sourceMap": true,
+		"types": ["jest", "node"],
+		"esModuleInterop": true,
+		"allowJs": true
+	},
+	"include": ["src/**/*"],
+	"exclude": ["node_modules"]
+}

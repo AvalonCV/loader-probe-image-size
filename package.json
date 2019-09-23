@@ -1,0 +1,32 @@
+{
+	"name": "loader-probe-image-size",
+	"repository": "https://github.com/AvalonCV/loader-probe-image-size.git",
+	"version": "1.0.0",
+	"description": "Image size loader for webpack - using probe-image-size",
+	"main": "/dist/index.js",
+	"scripts": {
+		"test": "jest",
+		"build": "tsc"
+	},
+	"author": "ME",
+	"license": "ISC",
+	"devDependencies": {
+		"@types/jest": "^24.0.18",
+		"@types/loader-utils": "^1.1.3",
+		"@types/memory-fs": "^0.3.2",
+		"@types/node": "^12.7.5",
+		"@types/require-from-string": "^1.2.0",
+		"@types/webpack": "^4.39.1",
+		"jest": "^24.9.0",
+		"memory-fs": "^0.4.1",
+		"require-from-string": "^2.0.2",
+		"ts-node": "^8.4.1",
+		"ts-jest": "^24.1.0",
+		"typescript": "^3.6.3",
+		"webpack": "^4.40.2"
+	},
+	"dependencies": {
+		"loader-utils": "^1.2.3",
+		"probe-image-size": "^5.0.0"
+	}
+}
