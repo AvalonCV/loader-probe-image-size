@@ -4,7 +4,7 @@
 	"files": ["/dist/index.js"],
 	"version": "1.0.1",
 	"description": "Image size loader for webpack - using probe-image-size",
-	"main": "/dist/index.js",
+	"main": "dist/index.js",
 	"scripts": {
 		"test": "jest",
 		"build": "tsc"
