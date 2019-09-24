@@ -12,6 +12,7 @@ There are certain use cases where it is beneficial to know the dimensions of the
 is about to show.
 * an image album (e.g. a bit like masonry)
 * using images without a page re-render when loading is done (usually a page 'jumps' when the actua image is shown - moving content further down the page as more images load. If you know their sizes you are able to reserve space in the layout and offer a slightly better UX)
+* .. even more
 
 
 ## Similar Projects
@@ -39,11 +40,11 @@ Add the loader to your webpack configuration (or replace your existing image loa
       {
         test: /\.(gif|jpe?g|png|svg|webp|ico)$/,
 		use: [{
-				loader: 'loader-probe-image-size',
-				options: {
-					context: path.resolve(__dirname, 'src')
-				}
-			}
+		  loader: 'loader-probe-image-size',
+		    options: {
+			  context: path.resolve(__dirname, 'src')
+		    }
+		  }
 		]
       }
     ]
