@@ -22,7 +22,7 @@ is about to show.
 
 ## Usage
 
-[Documentation: Using loaders](http://webpack.github.io/docs/using-loaders.html)
+[Documentation: Using loaders](https://webpack.js.org/concepts/#loaders)
 
 ### Installation
 ``` javascript
