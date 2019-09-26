@@ -36,29 +36,26 @@ const loader = function (content) {
     });
     var callback = this.async();
     const stream = fs_1.default.createReadStream(this.resourcePath);
-    if (options.emitFile || this.emitFile) {
-        this.emitFile(url, content, null);
+    if (callback) {
+        probe_image_size_1.default(stream)
+            .then(image => {
+            if (options.emitFile || this.emitFile) {
+                this.emitFile(url, content, null);
+            }
+            // additional check to callback to keep typescript happy?
+            callback && callback(null, imageToString(Object.assign(Object.assign({}, image), { src: url })));
+        })
+            .catch(error => {
+            // additional check to callback to keep typescript happy?
+            callback && callback(error);
+        })
+            .finally(() => {
+            stream.close();
+        });
     }
-    probe_image_size_1.default(stream)
-        .then(image => {
-        if (callback) {
-            callback(null, imageToString(Object.assign(Object.assign({}, image), { src: url })));
-        }
-        else {
-            throw new Error('Cannot be async :/');
-        }
-    })
-        .catch(error => {
-        if (callback) {
-            callback(error);
-        }
-        else {
-            throw error;
-        }
-    })
-        .finally(() => {
-        stream.close();
-    });
+    else {
+        throw new Error('Cannot be async :/');
+    }
 };
 exports.default = loader;
 exports.raw = true;

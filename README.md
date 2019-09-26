@@ -20,6 +20,7 @@ is about to show.
 * https://www.npmjs.com/package/probe-image-size-loader
 * https://github.com/boopathi/image-size-loader
 * https://github.com/tremby/image-dimensions-loader
+* https://github.com/dashed/sizeof-loader
 
 ## Usage
 

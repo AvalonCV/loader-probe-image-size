@@ -4,14 +4,17 @@ import { loader } from 'webpack';
 import { getOptions, interpolateName } from 'loader-utils';
 import probe from 'probe-image-size';
 
-interface ImageData {
+interface CoreImageData {
 	src: string;
 	width: number;
 	height: number;
 	bytes?: number;
 	type: string;
-	[other: string]: any;
 }
+
+type ImageData = CoreImageData & {
+	[other: string]: any;
+};
 
 const imageToString = function(image: ImageData): string {
 	// For requires from CSS when used with webpack css-loader,
@@ -50,28 +53,25 @@ const loader: loader.Loader = function(content): void {
 	var callback = this.async();
 	const stream = fs.createReadStream(this.resourcePath);
 
-	if (options.emitFile || this.emitFile) {
-		this.emitFile(url, content, null);
+	if (callback) {
+		probe(stream)
+			.then(image => {
+				if (options.emitFile || this.emitFile) {
+					this.emitFile(url, content, null);
+				}
+				// additional check to callback to keep typescript happy?
+				callback && callback(null, imageToString({ ...image, src: url }));
+			})
+			.catch(error => {
+				// additional check to callback to keep typescript happy?
+				callback && callback(error);
+			})
+			.finally(() => {
+				stream.close();
+			});
+	} else {
+		throw new Error('Cannot be async :/');
 	}
-
-	probe(stream)
-		.then(image => {
-			if (callback) {
-				callback(null, imageToString({ ...image, src: url }));
-			} else {
-				throw new Error('Cannot be async :/');
-			}
-		})
-		.catch(error => {
-			if (callback) {
-				callback(error);
-			} else {
-				throw error;
-			}
-		})
-		.finally(() => {
-			stream.close();
-		});
 };
 
 export default loader;

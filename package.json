@@ -4,7 +4,7 @@
 	"files": [
 		"/dist/index.js"
 	],
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"description": "A webpack image loader with additional size information (using probe-image-size)",
 	"keywords": [
 		"webpack",
